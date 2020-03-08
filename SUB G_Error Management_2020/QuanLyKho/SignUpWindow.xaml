@@ -1,0 +1,221 @@
+﻿<Window x:Class="QuanLyKho.SignUpWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:local="clr-namespace:QuanLyKho"
+        mc:Ignorable="d"
+        
+        xmlns:uc="clr-namespace:QuanLyKho.UserControlKteam"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+         TextElement.FontWeight="Regular"
+         TextElement.FontSize="13"
+         TextOptions.TextFormattingMode="Ideal"
+         TextOptions.TextRenderingMode="Auto"
+         Background="{DynamicResource MaterialDesignPaper}"
+         FontFamily="{DynamicResource MaterialDesignFont}"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        x:Name="window"
+        DataContext="{DynamicResource SignUpVM}"
+        
+        Title="Đăng ký người dùng mới" Height="600" Width="400">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="6*"></RowDefinition>
+            <RowDefinition Height="100*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" VerticalAlignment="Top">
+            <uc:ControlBarUC Tag="{Binding Title, ElementName=window}"></uc:ControlBarUC>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition  Height="0*"></RowDefinition>
+                <RowDefinition  Height="12*"></RowDefinition>
+                <RowDefinition  Height="12*"></RowDefinition>
+                <RowDefinition  Height="12*"></RowDefinition>
+                <RowDefinition Height="9*"></RowDefinition>
+                <RowDefinition  Height="9*"></RowDefinition>
+                <RowDefinition  Height="9*"></RowDefinition>
+                <RowDefinition  Height="9*"></RowDefinition>
+                <RowDefinition  Height="9*"></RowDefinition>
+                <RowDefinition  Height="4*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0"></Grid>
+            <Grid Grid.Row="1" Background="Gold">
+                <TextBlock VerticalAlignment="Center" Margin="20" Text="Tạo tài khoản mới" FontSize="30" FontWeight="Bold" HorizontalAlignment="Center"
+                    Style="{StaticResource MaterialDesignHeadlineTextBlock}">
+                </TextBlock>
+            </Grid>
+            <Grid Grid.Row="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"></RowDefinition>
+                    <RowDefinition Height="1*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.Resources>
+                    <Style TargetType="Grid">
+                        <Setter Property="Margin" Value="100 0 100 0"></Setter>
+                    </Style>
+                </Grid.Resources>
+                <Grid Grid.Row="0">
+                    <TextBox
+                        materialDesign:HintAssist.Hint="Họ và tên" Name="tbFullName"           
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="-100,0,-100,0" >
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="TextChanged">
+                                <i:InvokeCommandAction Command="{Binding FullNameHint}" CommandParameter="{Binding ElementName=tbFullName}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </TextBox>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <TextBlock Name="tblFullNameHint"
+                        FontSize="13" 
+                        Margin="-100,5,-100,5" 
+                        Foreground="OrangeRed"
+                        Text="{Binding strFullNameHint}" 
+                        >
+                    </TextBlock>
+
+                </Grid>
+
+            </Grid>
+            <Grid Grid.Row="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"></RowDefinition>
+                    <RowDefinition Height="1*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.Resources>
+                    <Style TargetType="Grid">
+                        <Setter Property="Margin" Value="100 0 100 0"></Setter>
+                    </Style>
+                </Grid.Resources>
+                <Grid Grid.Row="0">
+                    <TextBox x:Name="tbGen"
+                    materialDesign:HintAssist.Hint="Gen"
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="-100,0,-100,0" >
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="TextChanged">
+                                <i:InvokeCommandAction Command="{Binding GenHint}" CommandParameter="{Binding ElementName=tbGen}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </TextBox>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <TextBlock Name="tblGenHint"
+                        FontSize="13" 
+                        Margin="-100,5,-100,5" 
+                        Foreground="OrangeRed"
+                        Text="{Binding strGenHint}">
+                    </TextBlock>
+                </Grid>
+
+            </Grid>
+            <Grid Grid.Row="4">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"></RowDefinition>
+                    <RowDefinition Height="1*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.Resources>
+                    <Style TargetType="Grid">
+                        <Setter Property="Margin" Value="100 0 100 0"></Setter>
+                    </Style>
+                </Grid.Resources>
+                <Grid Grid.Row="0">
+                    <TextBox x:Name="tbLine"
+                    materialDesign:HintAssist.Hint="Line hiện tại"
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="-100,0,-100,0" >
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="TextChanged">
+                                <i:InvokeCommandAction Command="{Binding LineHint}" CommandParameter="{Binding ElementName=tbLine}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </TextBox>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <TextBlock Name="tblLineHint"
+                        FontSize="13" 
+                        Margin="-100,5,-100,5" 
+                        Foreground="OrangeRed"
+                        Text="{Binding strGenHint}">
+                    </TextBlock>
+                </Grid>
+
+            </Grid>
+            <Grid Grid.Row="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"></RowDefinition>
+                    <RowDefinition Height="1*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.Resources>
+                    <Style TargetType="Grid">
+                        <Setter Property="Margin" Value="100 0 100 0"></Setter>
+                    </Style>
+                </Grid.Resources>
+                <Grid Grid.Row="0">
+                    <TextBox x:Name="tbShift"
+                    materialDesign:HintAssist.Hint="Ca/kíp"
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="-100,0,-100,0" >
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="TextChanged">
+                                <i:InvokeCommandAction Command="{Binding ShiftHint}" CommandParameter="{Binding ElementName=tbShift}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </TextBox>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <TextBlock Name="tblShiftHint"
+                        FontSize="13" 
+                        Margin="-100,5,-100,5" 
+                        Foreground="OrangeRed"
+                        Text="{Binding strGenHint}">
+                    </TextBlock>
+                </Grid>
+
+            </Grid>
+            <Grid Grid.Row="6">
+                <Grid.Resources>
+                    <Style TargetType="Grid">
+                        <Setter Property="Margin" Value="100 0 100 6"></Setter>
+                    </Style>
+                </Grid.Resources>
+                <PasswordBox x:Name="ChosenPassword"
+                                 materialDesign:HintAssist.Hint="Mật khẩu"
+                                 Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" />
+            </Grid>
+            <Grid Grid.Row="7">
+                <Grid.Resources>
+                    <Style TargetType="Grid">
+                        <Setter Property="Margin" Value="100 0 100 6"></Setter>
+                    </Style>
+                </Grid.Resources>
+                <PasswordBox x:Name="ConfirmPassword"
+                                 materialDesign:HintAssist.Hint="Xác Nhận Mật khẩu"
+                                 Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" />
+            </Grid>
+            <Grid Grid.Row="8">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0"    
+                            Style="{StaticResource MaterialDesignRaisedButton}"    
+                            Width="110"    
+                            ToolTip="Resource name: MaterialDesignRaisedButton" Content="Đăng ký"></Button>
+                <Button Grid.Column="1"    
+                            Style="{StaticResource MaterialDesignRaisedButton}"    
+                            Width="110"    
+                            Background="OrangeRed"
+                            ToolTip="Resource name: MaterialDesignRaisedButton" Content="Hủy"></Button>
+            </Grid>
+            <Grid Grid.Row="9">
+                <Grid.Resources>
+
+                </Grid.Resources>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
